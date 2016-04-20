@@ -1,21 +1,15 @@
 @extends('layouts.master')
 
 @section('title')
-    Blog
+    Post title
 @endsection
 
 @section('styles')
-    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 @endsection
 
 @section('content')
-   <div class="callout large primary">
-        <div class="row column text-center">
-            <h1>Our Blog</h1>
-            <h2 class="subheader">Such a Simple Blog Layout</h2>
-        </div>
-    </div>
+   
     
     <div class="row medium-8 large-7 columns">
         <div class="blog-post">
@@ -25,7 +19,7 @@
             <div class="callout">
                 <ul class="menu simple">
                     <li><a href="#">Author: Mike Mikers</a></li>
-                    <li><a href="#">Comments: 3</a></li>
+                    <li><a href="#">Read More</a></li>
                 </ul>
             </div>
         </div>
