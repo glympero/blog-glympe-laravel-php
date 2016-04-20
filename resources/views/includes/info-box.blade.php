@@ -1,30 +1,30 @@
 @section('styles')
-     <link rel="stylesheet" href="{{ URL::to('src/css/common.css') }}" type="text/css" />
+     <link rel="stylesheet" href="{{ URL::secure('src/css/common.css') }}" type="text/css" />
 @append
 
 @if(Session::has('fail'))
     
-    <div data-alert class="alert-box alert round">
+    <div class="alert callout">
       {{ Session::get('fail') }}
-      <a href="#" class="close">&times;</a>
+      
     </div>
 @endif
 
 @if(Session::has('success'))
     
-    <div data-alert class="alert-box success round">
+    <div class="success callout">
       {{ Session::get('success') }}
-      <a href="#" class="close">&times;</a>
+      
     </div>
 @endif
 
 @if(count($errors) > 0)
-    <div data-alert class="alert-box success round">
-      <ul>
+    <div class="alert callout">
+      
           @foreach($errors->all() as $error)
-              <li>{{ $error }}</li>
+              <p>{{ $error }}</p>
           @endforeach
-      </ul>
-      <a href="#" class="close">&times;</a>
+      
+      
     </div>
 @endif
