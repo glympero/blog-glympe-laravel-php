@@ -80,4 +80,19 @@ Route::group([
         'uses' => 'PostController@getSinglePost',
         'as' => 'admin.blog.post'
     ]);
+    
+    Route::get('/blog/post/{post_id}/edit', [
+        'uses' => 'PostController@getUpdatePost',
+        'as' => 'admin.blog.post.edit'
+    ]);
+    
+    Route::post('/blog/post/update', [
+        'uses' => 'PostController@postUpdatePost',
+        'as' => 'admin.blog.post.update'
+    ]);
+    
+    Route::get('/blog/post/{post_id}/delete', [
+        'uses' => 'PostController@getDeletePost',
+        'as' => 'admin.blog.post.delete'
+    ]);
 });
