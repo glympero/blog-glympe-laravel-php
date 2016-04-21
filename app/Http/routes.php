@@ -47,6 +47,10 @@ Route::get('/contact', [
     'as' => 'contact'
 ]);
 
+Route::post('/contact/sendmail', [
+    'uses' => 'ContactMessageController@postSendMessage',
+    'as' => 'contact.send'
+]);
 /* 
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -114,5 +118,10 @@ Route::group([
     Route::get('blog/category/{category_id}/delete', [
         'uses' => 'CategoryController@getDeleteCategory',
         'as' => 'admin.blog.category.delete'
+    ]);
+    
+    Route::get('/contact/messages', [
+        'uses' => 'ContactMessageController@getContactMessageIndex',
+        'as' => 'admin.contact.index'
     ]);
 });
