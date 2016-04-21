@@ -19,10 +19,7 @@
         <script type="text/javascript">
             var baseUrl = "{{ URL::to('/') }}"
         </script>
-        <script src="{{ URL::secure('src/js/vendor/jquery.js') }}"></script>
-        <script src="{{ URL::secure('src/js/vendor/what-input.js') }}"></script>
-        <script src="{{ URL::secure('src/js/vendor/foundation.js') }}"></script>
-        <script src="{{ URL::secure('src/js/app.js') }}"></script>
+        
         @yield('scripts')
         @include('includes/footer')
     </body>

@@ -95,4 +95,24 @@ Route::group([
         'uses' => 'PostController@getDeletePost',
         'as' => 'admin.blog.post.delete'
     ]);
+    
+    Route::get('/blog/categories', [
+        'uses' => 'CategoryController@getCategoryIndex',
+        'as' => 'admin.blog.categories'
+    ]);
+    
+    Route::post('blog/category/create', [
+        'uses' => 'CategoryController@postCreateCategory',
+        'as' => 'admin.blog.category.create'
+    ]);
+    
+    Route::post('blog/categories/update', [
+        'uses' => 'CategoryController@postUpdateCategory',
+        'as' => 'admin.blog.categories.update'
+    ]);
+    
+    Route::get('blog/category/{category_id}/delete', [
+        'uses' => 'CategoryController@getDeleteCategory',
+        'as' => 'admin.blog.category.delete'
+    ]);
 });
