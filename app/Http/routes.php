@@ -51,6 +51,16 @@ Route::post('/contact/sendmail', [
     'uses' => 'ContactMessageController@postSendMessage',
     'as' => 'contact.send'
 ]);
+
+Route::get('/admin/login', [
+    'uses' => 'AdminController@getLogin',
+    'as' => 'admin.login'
+]);
+
+Route::post('/admin/login', [
+    'uses' => 'AdminController@postLogin',
+    'as' => 'admin.login'
+]);
 /* 
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -58,11 +68,17 @@ Route::post('/contact/sendmail', [
 */
 
 Route::group([
-    'prefix' => '/admin'
+    'prefix' => '/admin',
+    'middleware' => 'auth'
 ], function(){
     Route::get('/', [
         'uses' => 'AdminController@getIndex',
         'as' => 'admin.index'
+    ]);
+    
+    Route::get('/logout', [
+        'uses' => 'AdminController@getLogout',
+        'as' => 'admin.logout'
     ]);
     
     Route::get('/blog/posts/create', [
@@ -110,12 +126,12 @@ Route::group([
         'as' => 'admin.blog.category.create'
     ]);
     
-    Route::post('blog/categories/update', [
+    Route::post('/blog/categories/update', [
         'uses' => 'CategoryController@postUpdateCategory',
         'as' => 'admin.blog.categories.update'
     ]);
     
-    Route::get('blog/category/{category_id}/delete', [
+    Route::get('/blog/category/{category_id}/delete', [
         'uses' => 'CategoryController@getDeleteCategory',
         'as' => 'admin.blog.category.delete'
     ]);
@@ -123,5 +139,10 @@ Route::group([
     Route::get('/contact/messages', [
         'uses' => 'ContactMessageController@getContactMessageIndex',
         'as' => 'admin.contact.index'
+    ]);
+    
+    Route::get('/contact/message/{message_id}/delete', [
+        'uses' => 'ContactMessageController@getDeleteMessage',
+        'as' => 'admin.contact.delete'
     ]);
 });

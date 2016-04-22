@@ -6,8 +6,9 @@
 @endsection
 
 @section('content')
-    @include('includes.info-box')
+    
     <div class="row medium-12 large-12 columns">
+        @include('includes.info-box')
         <div class="card">
             <header>
                 <nav>
@@ -51,7 +52,7 @@
             <header>
                 <nav>
                     
-                    <li><a href="" class="btn">Show all Messages</a></li>
+                    <li><a href="{{ route('admin.contact.index') }}" class="btn">Show all Messages</a></li>
                 </nav>
             </header>
             <section>
@@ -66,16 +67,7 @@
                                  <h3>{{ $contact_message->subject }}</h3>
                                  <span class="info">Sender: {{ $contact_message->sender }} | {{ $contact_message->created_at }}</span>
                              </div>
-                             <div class="edit">
-                                 <nav>
-                                     <ul>
-                                         <li>
-                                             <a href="">View Message</a>
-                                             <a href="" class="danger">Delete</a>
-                                         </li>
-                                     </ul>
-                                 </nav>
-                             </div>
+                             
                          </article>
                      </li>
                      @endforeach
@@ -91,5 +83,5 @@
             var token = "{{ Session::token() }}";
     </script>
     <script type="text/javascript" src="{{ URL::secure('src/js/modal.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::secure('src/js/contact_messages.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::secure('src/js/contact-messages.js') }}"></script>
 @endsection

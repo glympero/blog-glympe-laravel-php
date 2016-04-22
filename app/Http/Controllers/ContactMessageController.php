@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\ContactMessage;
 use Illuminate\Support\Facades\Event;
 use App\Events\MessageSent;
+use Illuminate\Support\Facades\Response;
 
 class ContactMessageController extends Controller{
     
@@ -34,5 +35,15 @@ class ContactMessageController extends Controller{
     public function getContactMessageIndex(){
         $contact_messages = ContactMessage::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.other.contact_messages', ['contact_messages' => $contact_messages]);
+    }
+    
+    public function getDeleteMessage($message_id){
+        $message = ContactMessage::find($message_id);
+        if(!$message){
+            return Response::json(['message' => 'Message not found' ], 404);
+            
+        }
+        $message->delete();
+        return Response::json(['message' => 'Message deleted'] , 200);
     }
 }

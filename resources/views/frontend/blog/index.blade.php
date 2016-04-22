@@ -1,3 +1,6 @@
+
+
+
 @extends('layouts.master')
 
 @section('title')
@@ -11,10 +14,11 @@
 @section('content')
     <div class="row medium-8 large-7 columns">
         @include('includes.info-box')
+        
         @foreach($posts as $post)
         <div class="blog-post">
             <h3>{{ $post->title }} <small>{{ $post->created_at }}</small></h3>
-            <img class="thumbnail" src="http://placehold.it/850x350">   
+            <img class="thumbnail" src="http://placehold.it/850x350">
             <p>{{ $post->body }}</p>
             <div class="callout">
                 <ul class="menu simple">

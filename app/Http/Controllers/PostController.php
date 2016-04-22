@@ -119,5 +119,6 @@ class PostController extends Controller{
             $pos = array_keys($words);
             $text = substr($text, 0, $pos[$words_count]). '...';
         }
+        return $text;
     }
 }
